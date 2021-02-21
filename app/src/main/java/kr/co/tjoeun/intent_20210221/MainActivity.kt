@@ -55,13 +55,39 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
 
+        // Dial 과 다른 건 반드시 권한이 필요하다는 것이다.
         callBtn.setOnClickListener {
             val phoneNum = phoneNumEdt.text.toString()
             //폰번호(010-1111-2222) => 안드로이드의 연결정보 (Uri) 로 변환
             val myUri = Uri.parse("tel:${phoneNum}")
 
             // Intent를 활용해서 => 안드로이드 전화 하면 띄우자
-            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+        }
+
+        smsBtn.setOnClickListener {
+            val smsNum = phoneNumEdt.text.toString()
+
+            // URI 필요
+            val myUri = Uri.parse("smsto:${smsNum}")
+
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+            
+            //문자 내용 기본값 입력. => 문자화면에 데이터 첨부.
+            myIntent.putExtra("sms_body", "원하는 기본 메세지")
+            startActivity(myIntent)
+        }
+
+        naverBtn.setOnClickListener {
+            val myUri = Uri.parse("https://www.naver.com")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+            startActivity(myIntent)
+        }
+
+        kakaoBtn.setOnClickListener {
+            val myUri = Uri.parse("market://details?id=com.kakao.talk")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
             startActivity(myIntent)
         }
     }
