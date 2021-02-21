@@ -12,4 +12,18 @@
         android:layout_height="wrap_content"
         android:text="1번째 Activity로 이동"/>
 
+    <EditText
+        android:id="@+id/contentEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="전달할 문구 입력"/>
+
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="메시지 보내기"
+        />
+
+
 </LinearLayout>
