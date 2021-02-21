@@ -6,6 +6,10 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    // 닉네임변경 요청  - 1001 이라는 것을 아예 변수로 넣어두고 사용하자.
+    val REQ_FOR_NICKNAME = 1001
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +34,13 @@ class MainActivity : AppCompatActivity() {
             myIntent.putExtra("출생년도", 1988)
 
             startActivity(myIntent) //비행기에 타는 행동
+        }
+
+        changeNicknameBtn.setOnClickListener {
+            val myIntent = Intent(this, EditNicknameActivity::class.java)
+
+            // 어떤 데이터를 받으러 가는건지를 숫자로 구별해야 함. ex. 닉네임변경 - 1001
+            startActivityForResult(myIntent, REQ_FOR_NICKNAME)
         }
     }
 }
