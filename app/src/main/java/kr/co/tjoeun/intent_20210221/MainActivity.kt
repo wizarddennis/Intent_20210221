@@ -1,5 +1,6 @@
 package kr.co.tjoeun.intent_20210221
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +42,21 @@ class MainActivity : AppCompatActivity() {
 
             // 어떤 데이터를 받으러 가는건지를 숫자로 구별해야 함. ex. 닉네임변경 - 1001
             startActivityForResult(myIntent, REQ_FOR_NICKNAME)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //requestCode 값 확인 => 닉네임을 가지러 갔다온게 맞는가?
+        if(requestCode == REQ_FOR_NICKNAME) {
+            //확인 버튼을 누른게 맞는지? 확인
+            if(resultCode == Activity.RESULT_OK) {
+                // 새 닉네임을 받아서 => 닉네임 테스트뷰에 반영.
+
+                val newNickName = data?.getStringExtra("nick")
+                nicknameTxt.text = newNickName
+            }
         }
     }
 }
