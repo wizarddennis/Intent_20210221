@@ -22,7 +22,7 @@
         android:id="@+id/sendBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="메시지 보내기"
+        android:text="2번째 Activity로 메시지 보내기"
         />
 
 
