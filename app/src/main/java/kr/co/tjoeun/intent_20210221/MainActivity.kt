@@ -54,6 +54,16 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(Intent.ACTION_DIAL, myUri)
             startActivity(myIntent)
         }
+
+        callBtn.setOnClickListener {
+            val phoneNum = phoneNumEdt.text.toString()
+            //폰번호(010-1111-2222) => 안드로이드의 연결정보 (Uri) 로 변환
+            val myUri = Uri.parse("tel:${phoneNum}")
+
+            // Intent를 활용해서 => 안드로이드 전화 하면 띄우자
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            startActivity(myIntent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
